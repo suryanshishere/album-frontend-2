@@ -7,7 +7,7 @@ import IMAGES from "./images.json";
 
 export default function PhotoAlbum() {
   return (
-    <div className="p-4 sm:p-8 flex items-center justify-center h-screen">
+    <div className="h-full w-full absolute flex items-center justify-center ">
       {/* @ts-ignore */}
       <HTMLFlipBook width={300} height={400} showCover autoSize drawShadow>
         {IMAGES.map((image, index) => (

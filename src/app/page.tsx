@@ -3,5 +3,5 @@
 import PhotoAlbum from "./photoAlbum";
 
 export default function Home() {
-  return <PhotoAlbum />;
+  return <div className="relative w-screen h-screen overflow-hidden"> <PhotoAlbum /></div>;
 }
