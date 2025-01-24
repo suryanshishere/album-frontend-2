@@ -8,8 +8,8 @@ import IMAGES from "./images.json";
 export default function PhotoAlbum() {
   return (
     <div className="h-full w-full absolute flex items-center justify-center ">
-      {/* @ts-ignore */}
-      <HTMLFlipBook width={300} height={400} showCover autoSize drawShadow>
+       {/* @ts-expect-error */}
+       <HTMLFlipBook width={300} height={400} showCover autoSize drawShadow>
         {IMAGES.map((image, index) => (
           <div key={index} className="page">
             <img
