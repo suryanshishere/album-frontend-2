@@ -15,6 +15,11 @@ import {
 } from "@mui/material";
 import { addComment } from "./store/commentsSlice";
 
+interface Comment {
+  text: string;
+  timestamp: string;
+}
+
 export default function Comments() {
   const comments = useSelector((state: RootState) => state.comments.list);
   const dispatch = useDispatch<AppDispatch>();
@@ -22,14 +27,14 @@ export default function Comments() {
 
   const handleAddComment = () => {
     if (text.trim()) {
-      // Dispatching the new comment to Redux
-      dispatch(
-        addComment({
-          text,
-          timestamp: new Date().toISOString(),
-        })
-      );
-      setText(""); // Clearing the input field after submission
+      const newComment = {
+        text,
+        timestamp: new Date().toISOString(),
+      };
+
+       dispatch(addComment(newComment));
+      
+       setText("");
     }
   };
 
@@ -64,7 +69,8 @@ export default function Comments() {
           color="primary"
           size="large"
           onClick={handleAddComment}
-          disabled={!text.trim()} 
+          disabled={!text.trim()}
+          sx={{ width: {xs:"100%",sm: "fit-content"} }}
         >
           Submit
         </Button>
@@ -73,13 +79,11 @@ export default function Comments() {
       <hr />
       <hr />
       <hr />
-      {/* Comments Header */}
       <Typography variant="h5" gutterBottom>
         Comments
       </Typography>
 
-      {/* Comments List */}
-      <List sx={{ maxHeight: 200, overflow: "auto", mb: 2 }}>
+      <List >
         {comments.map((comment, index) => (
           <ListItem key={index} alignItems="flex-start">
             <ListItemText
@@ -93,4 +97,4 @@ export default function Comments() {
       <Divider sx={{ my: 2 }} />
     </Box>
   );
-}
+} 
