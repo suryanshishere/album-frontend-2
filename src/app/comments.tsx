@@ -14,12 +14,7 @@ import {
   Divider,
 } from "@mui/material";
 import { addComment } from "./store/commentsSlice";
-
-interface Comment {
-  text: string;
-  timestamp: string;
-}
-
+ 
 export default function Comments() {
   const comments = useSelector((state: RootState) => state.comments.list);
   const dispatch = useDispatch<AppDispatch>();
